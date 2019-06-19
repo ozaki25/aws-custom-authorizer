@@ -1,0 +1,15 @@
+tenant: ozaki25
+app: custom-authorizer
+service: custom-authorizer
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: ap-northeast-1
+  profile: dev1
+functions:
+  main:
+    handler: handler.main
+    events:
+      - http:
+          path: /{ANY+}
+          method: GET
