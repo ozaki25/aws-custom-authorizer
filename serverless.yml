@@ -10,5 +10,4 @@ functions:
   main:
     handler: handler.main
     events:
-      - http:
-          path: /{ANY+}
+      - http: ANY /
