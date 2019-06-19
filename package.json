@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "serverless-http": "^2.0.2"
-  }
-}

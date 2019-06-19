@@ -12,4 +12,3 @@ functions:
     events:
       - http:
           path: /{ANY+}
-          method: GET

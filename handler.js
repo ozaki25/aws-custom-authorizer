@@ -1,7 +1,6 @@
-const serverless = require('serverless-http');
-
-function main(event, context) {
-  const token = event.authorizationToken;
+exports.main = function main(event, context) {
+  const token = event.headers.Authorization;
+  console.log({ event, token });
   switch (token) {
     case 'allow':
       context.succeed(generatePolicy('user', 'Allow', event.methodArn));
@@ -13,11 +12,12 @@ function main(event, context) {
       context.fail('Unauthorized');
       break;
     default:
-      context.fail('error');
+      context.fail('error!!!!');
   }
-}
+};
 
 function generatePolicy(principalId, effect, resource) {
+  console.log({ principalId, effect, resource });
   return {
     principalId: principalId,
     policyDocument: {
@@ -32,5 +32,3 @@ function generatePolicy(principalId, effect, resource) {
     },
   };
 }
-
-module.exports.handler = serverless(main);
