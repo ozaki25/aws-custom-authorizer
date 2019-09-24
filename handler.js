@@ -6,7 +6,7 @@ exports.main = function main(event, context) {
   if (token === key) {
     context.succeed(generatePolicy('user', 'Allow', event.methodArn));
   } else {
-    c.fail('Unauthorized');
+    context.fail('Unauthorized');
   }
 };
 
