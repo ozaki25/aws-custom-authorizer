@@ -1,18 +1,12 @@
+const key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+
 exports.main = function main(event, context) {
   const token = event.headers.Authorization;
   console.log({ event, token });
-  switch (token) {
-    case 'allow':
-      context.succeed(generatePolicy('user', 'Allow', event.methodArn));
-      break;
-    case 'deny':
-      context.succeed(generatePolicy('user', 'Deny', event.methodArn));
-      break;
-    case 'unauthorized':
-      context.fail('Unauthorized');
-      break;
-    default:
-      context.fail('error!!!!');
+  if (token === key) {
+    context.succeed(generatePolicy('user', 'Allow', event.methodArn));
+  } else {
+    c.fail('Unauthorized');
   }
 };
 
